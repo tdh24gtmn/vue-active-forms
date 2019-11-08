@@ -1,36 +1,42 @@
 <template>
   <v-app>
-    <v-app-bar app>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn
-        text
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-      >
-        <span class="mr-2">Latest Release</span>
-      </v-btn>
-    </v-app-bar>
-
     <v-content>
-      <HelloWorld/>
+      <Home />
     </v-content>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import Home from "./views/Home.vue";
 
 export default {
-  name: 'App',
+  name: "app",
   components: {
-    HelloWorld,
+    Home
   },
-  data: () => ({
-    //
-  }),
+  data: () => ({})
 };
 </script>
+
+<style lang="scss">
+@import "~@/assets/css/normalize.module.css";
+
+@font-face {
+  font-family: "ProximaNova-Regular";
+  src: url("~@/assets/fonts/ProximaNova-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "ProximaNova-Semibold";
+  src: url("~@/assets/fonts/ProximaNova-Semibold.woff") format("woff");
+}
+#app {
+  font-family: "ProximaNova-Regular", sans-serif;
+  font-size: 20px;
+}
+
+.v-content {
+  background-color: #f0f0f0;
+}
+</style>
+
