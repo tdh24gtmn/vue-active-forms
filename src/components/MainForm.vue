@@ -1,5 +1,5 @@
 <template>
-  <v-form ref="form" v-model="valid" v-bind="inputsObject">
+  <v-form ref="form">
     <v-row>
       <v-col cols="12" md="6">
         <v-text-field
@@ -9,8 +9,7 @@
           label="First name"
           required
         ></v-text-field>
-        <!-- <v-switch v-model="valid" class="ma-4" label="Valid" readonly></v-switch> -->
-        <!-- <v-text-field
+        <v-text-field
           v-model="inputsObject[0].email"
           :rules="emailRules"
           :append-icon="greenCheckIcon"
@@ -80,20 +79,19 @@
           :append-icon="greenCheckIcon"
           @click="toUpperCase"
           class="colPadding"
-        ></v-text-field>-->
+        ></v-text-field>
       </v-col>
     </v-row>
     <div class="line"></div>
     <div class="flex-between">
       <v-btn text rounded class="reset-btn" @click="reset" v-on:click="changeIcons">Reset All</v-btn>
-      <v-btn :rounded="true" :color="color" :disabled="!valid" @click="validate">Continue</v-btn>
+      <v-btn :rounded="true" :color="color" @click="validate">Continue</v-btn>
     </div>
   </v-form>
 </template>
 <script>
 export default {
   data: () => ({
-    valid: false,
     inputsObject: [
       {
         firstname: "",
@@ -186,11 +184,7 @@ export default {
     },
     validate() {
       if (this.$refs.form.validate()) {
-        // this.snackbar = true;
-
         // this.inputsObject[0].code = this.lowCaseCode.toLocaleUpperCase();
-
-        // this.lowCaseCode.toLocaleUpperCase() = this.inputsObject[0].code;
 
         this.changeIcon = "mdi-check";
         this.iconChange = "mdi-check";
@@ -201,9 +195,10 @@ export default {
           1,
           this.inputsObject[0]
         );
+
         setTimeout(this.changeIcons, 400);
 
-        console.log(this.$store.state.ValidateArray);
+        // console.log(this.$store.state.ValidateArray);
 
         if (this.$store.state.validateCounter < 4) {
           this.$store.state.validateCounter++;
